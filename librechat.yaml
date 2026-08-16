@@ -88,8 +88,8 @@ interface:
 # ============================================================================
 # Custom AI endpoints
 # ============================================================================
+# Agent-level capabilities and citation limits.
 endpoints:
-  # Agent-level capabilities and citation limits.
   agents:
     capabilities:
       - "execute_code"
@@ -104,6 +104,7 @@ endpoints:
     maxCitations: 30
     maxCitationsPerFile: 7
     minRelevanceScore: 0.0
+    artifacts: "auto"
 
   # Assistants endpoint config (cosmetic only — activation requires
   # OPENAI_API_KEY to be set in Railway Variables; without it, this
