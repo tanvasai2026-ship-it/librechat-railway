@@ -427,10 +427,10 @@ actions:
 
 # Definition of custom endpoints
 endpoints:
-  # assistants:
-  #   disableBuilder: false # Disable Assistants Builder Interface by setting to `true`
-  #   pollIntervalMs: 3000  # Polling interval for checking assistant updates
-  #   timeoutMs: 180000  # Timeout for assistant operations
+  assistants:
+   disableBuilder: false # Disable Assistants Builder Interface by setting to `true`
+   pollIntervalMs: 3000  # Polling interval for checking assistant updates
+   timeoutMs: 180000  # Timeout for assistant operations
   #   # Should only be one or the other, either `supportedIds` or `excludedIds`
   #   supportedIds: ["asst_supportedAssistantId1", "asst_supportedAssistantId2"]
   #   # excludedIds: ["asst_excludedAssistantId"]
@@ -439,12 +439,12 @@ endpoints:
   #   # (optional) Models that support retrieval, will default to latest known OpenAI models that support the feature
   #   retrievalModels: ["gpt-4-turbo-preview"]
   #   # (optional) Assistant Capabilities available to all users. Omit the ones you wish to exclude. Defaults to list below.
-  #   capabilities: ["code_interpreter", "retrieval", "actions", "tools", "image_vision"]
-  # agents:
+    capabilities: ["code_interpreter", "retrieval", "actions", "tools", "image_vision"]
+   agents:
   #   # (optional) Default recursion depth for agents, defaults to 25
-  #   recursionLimit: 50
+    recursionLimit: 50
   #   # (optional) Max recursion depth for agents, defaults to 25
-  #   maxRecursionLimit: 100
+    maxRecursionLimit: 100
   #   # (optional) Abort a run once a single streamed tool call's arguments exceed this many bytes.
   #   # Guards against runaway malformed tool-call generation. Defaults to 65536 (64 KiB); 0 disables.
   #   maxToolCallArgBytes: 65536
@@ -457,7 +457,7 @@ endpoints:
   #   maxToolCallArgBytesByTool:
   #     create_file: 131072
   #   # (optional) Disable the builder interface for agents
-  #   disableBuilder: false
+    disableBuilder: false
   #   # (optional) When conversation titles are generated:
   #   #   immediate (default): generate as soon as the request is made, in parallel
   #   #     with the response, from the user's first message (title appears within ~1-2s).
@@ -466,7 +466,7 @@ endpoints:
   #   titleTiming: immediate
   #   # (optional) Generate one-line headers for blocks of Agent reasoning and tool calls.
   #   # Header generation is a separate model call whose usage and cost are recorded.
-  #   activityLabel: true
+    activityLabel: true
   #   activityEndpoint: openAI
   #   activityModel: gpt-4.1-nano
   #   # activityPrompt: 'Write a short activity label...'
@@ -484,7 +484,7 @@ endpoints:
   #   skills:
   #     maxCatalogSkills: 20
   #   # (optional) Agent Capabilities available to all users. Omit the ones you wish to exclude. Defaults to list below.
-  #   capabilities: ["deferred_tools", "execute_code", "file_search", "web_search", "artifacts", "subagents", "actions", "context", "skills", "memory", "ask_user_question", "tools", "chain", "ocr"]
+   capabilities: ["deferred_tools", "execute_code", "file_search", "web_search", "artifacts", "subagents", "actions", "context", "skills", "memory", "ask_user_question", "tools", "chain", "ocr"]
   #   # The following capabilities are opt-in and must be added explicitly:
   #   # "programmatic_tools", "stateful_code_sessions", "run_in_background", "tool_intents"
   #   # "stateful_code_sessions" is highly experimental and may change substantially.
@@ -1021,6 +1021,8 @@ endpoints:
 #       - id: anthropic_api_key
 #         label: Anthropic API key
 #         regex: "sk-ant-[A-Za-z0-9_-]{20,}"
+version: 1.1.5
+
 mcpServers:
   python-sandbox:
     type: stdio
