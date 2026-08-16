@@ -88,14 +88,3 @@ webSearch:
   tavilySearchOptions:
     searchDepth: "advanced"   # Forces Tavily to do a deep dive dive and pass more URLs
     maxResults: 10            # Increases the pool of URLs passed to the text model
-
-modelSpecs:
-  list:
-    - name: "openrouter-super-agent"
-      label: "OpenRouter Agent (Search + Code)"
-      icon: "Sparkles"
-      preset:
-        model: "openrouter/anthropic/claude-4-sonnet"
-        endpoint: "custom"
-        # ─── YOU SEE IT DECLARED HERE ───
-        tools: ["web-search", "code-interpreter"] 
