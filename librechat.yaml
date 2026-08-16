@@ -1,12 +1,8 @@
 version: 1.3.1
 
-# Personal LibreChat configuration for Railway.
-# Keep secrets in Railway Variables, not in this file:
-# OPENROUTER_KEY=sk-or-v1-...
-# TAVILY_API_KEY=tvly-...
-
 interface:
   customWelcome: "Welcome to your private AI workspace. Choose OpenRouter, select a model, and enable Web Search when you need current information."
+
   modelSelect: true
   parameters: true
   presets: true
@@ -16,14 +12,12 @@ interface:
   contextUsage: true
   contextCost: true
 
-  # Display the Web Search control in the chat composer.
   webSearch: true
-
-  # Display file search controls where supported by your installed LibreChat services.
   fileSearch: true
-
-  # Allow source citations from file-search/RAG results where supported.
   fileCitations: true
+  maxCitations: 50
+  minRelevanceScore: 0.0
+  runCode: true
 
   privacyPolicy:
     externalUrl: "https://librechat.ai/privacy-policy"
@@ -40,12 +34,9 @@ interface:
       This is a private, personal LibreChat service.
 
       - Do not share access credentials or API keys.
-      - Do not upload confidential information unless you understand the privacy and retention implications of each connected AI provider.
       - AI-generated output may be inaccurate. Verify important legal, medical, financial, tax, compliance, and other high-impact information with qualified sources.
-      - You are responsible for activity performed through your account and for any third-party API usage charges.
+      - You are responsible for activity performed through your account and for third-party API usage charges.
 
-# OpenRouter is the only AI-model endpoint configured here.
-# The API key is read securely from Railway's OPENROUTER_KEY variable.
 endpoints:
   custom:
     - name: "OpenRouter"
@@ -61,19 +52,13 @@ endpoints:
       titleConvo: true
       titleModel: "openai/gpt-4o-mini"
       summarize: false
+      modelDisplayLabel: "OpenRouter"
 
-# Built-in Web Search configuration.
-# Tavily is used for both search and page extraction. The actual key stays in Railway.
 webSearch:
   searchProvider: "tavily"
   scraperProvider: "tavily"
   tavilyApiKey: "${TAVILY_API_KEY}"
   logResult: false
-
-webSearch:
-  searchProvider: tavily
-  scraperProvider: tavily
-  tavilyApiKey: "${TAVILY_API_KEY}"
   tavilySearchOptions:
-    searchDepth: "advanced"   # Forces Tavily to do a deep dive dive and pass more URLs
-    maxResults: 10            # Increases the pool of URLs passed to the text model
+    searchDepth: "advanced"
+    maxResults: 10
