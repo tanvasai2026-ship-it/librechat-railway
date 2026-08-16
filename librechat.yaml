@@ -1021,30 +1021,3 @@ endpoints:
 #       - id: anthropic_api_key
 #         label: Anthropic API key
 #         regex: "sk-ant-[A-Za-z0-9_-]{20,}"
-# ============================================================================
-# Code Interpreter (E2B via MCP)
-# Requires E2B_API_KEY set in Railway Variables on the LibreChat service.
-# ============================================================================
-
-endpoints:
-  agents:
-    capabilities:
-      - "execute_code"
-      - "file_search"
-      - "web_search"
-      - "artifacts"
-      - "actions"
-      - "context"
-      - "tools"
-      - "chain"
-
-mcpServers:
-  e2b:
-    type: stdio
-    command: npx
-    args:
-      - "-y"
-      - "@e2b/mcp-server"
-    env:
-      E2B_API_KEY: "${E2B_API_KEY}"
-    timeout: 120000
