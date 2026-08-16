@@ -70,17 +70,6 @@ webSearch:
   tavilyApiKey: "${TAVILY_API_KEY}"
   logResult: false
 
-interface:
-  # Enables the interactive "Run Code" play button on markdown blocks
-  runCode: true
-  fileCitations: true
-
-interface:
-  fileCitations: true
-  # Lower constraints to make sure nothing gets hidden or dropped
-  maxCitations: 50            # Ensure a high threshold
-  minRelevanceScore: 0.0      # Set to 0.0 so NO sources are filtered out
-
 webSearch:
   searchProvider: tavily
   scraperProvider: tavily
