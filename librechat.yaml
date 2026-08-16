@@ -162,22 +162,3 @@ webSearch:
     searchDepth: "advanced"
     maxResults: 10
 
-# ============================================================================
-# MCP Servers
-# "python_interpreter" — a Python Code Interpreter MCP server, backed by
-# E2B's cloud sandbox (npx-based, works inside the LibreChat container
-# without needing elevated Docker privileges). Requires E2B_API_KEY set
-# in Railway Variables.
-# Attach this tool to an Agent (Add MCP Server Tools) to use it — it also
-# appears pinned by default via defaultPinnedTools -> "mcp" above.
-# ============================================================================
-mcpServers:
-  python_interpreter:
-    type: stdio
-    command: npx
-    args:
-      - "-y"
-      - "@e2b/mcp-server"
-    env:
-      E2B_API_KEY: "${E2B_API_KEY}"
-    timeout: 120000
